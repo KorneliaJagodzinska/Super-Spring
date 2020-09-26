@@ -55,8 +55,13 @@
         <div class="student-cell" th:text="${studencik.ects}">
         </div>
         <div class="student-cell actions-cell">
-            <a th:href="@{/student/details(studentId=studencik.id)}">Details</a>
-            <a th:href="@{/student/delete(studentId=studencik.id)}">Delete</a>
+
+            //@PathVariable
+            <a th:href="@{/student/details/${studencik.id}}">Details</a>
+
+            //@RequestParam
+            <a th:href="@{/student/delete(studentId=${studencik.id})}">Delete</a>
+
         </div>
     </div>
 </div>

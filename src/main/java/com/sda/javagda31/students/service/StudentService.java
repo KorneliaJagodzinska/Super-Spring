@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 // Dependency Injection mechanizm
 @Service
@@ -27,5 +28,9 @@ public class StudentService {
 
     public void delete(Long studentId) {
         studentRepository.deleteById(studentId);
+    }
+
+    public Optional<Student> findStudent(Long studentId) {
+        return studentRepository.findById(studentId);
     }
 }
