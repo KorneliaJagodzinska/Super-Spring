@@ -26,4 +26,10 @@ public class RestIndexController {
         return liczba1+liczba2;
     }
 
+    //2.  Stwórz endpoint pod adresem /sub który pobiera dwa parametry i odejmuje ich wartości od siebie, po czym zwraca wynik opakowany w APIResponse
+// http://localhost:8080/api/sub?w1=100&w2=50
+    @GetMapping("/sub")
+    public ApiResponse subTwoValues(@RequestParam(name = "w1") double wartosc1, @RequestParam(name = "w2") double wartosc2) {
+        return new ApiResponse("Wynik = " + (wartosc1 - wartosc2));
+    }
 }
