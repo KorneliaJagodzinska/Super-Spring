@@ -26,5 +26,6 @@ public class StudentController {
     public String submitForm(Student student){
     log.info("Received"+ student);
     studentService.save(student);
+    return "student_form";
     }
 }
