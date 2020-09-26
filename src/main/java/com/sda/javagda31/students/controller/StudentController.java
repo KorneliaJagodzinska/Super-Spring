@@ -48,7 +48,13 @@ public class StudentController {
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable(name = "id") Long studentId, Model model) {
-        Optional<Student> studentOptional= studentService.findStudent(studentId);
-        return "student_details";
+        Optional<Student> studentOptional = studentService.findStudent(studentId);
+        if (studentOptional.isPresent()) {
+            Student foundStudent = studentOptional.get();
+            model.addAttribute("student", foundStudent);
+            return "student_details";
+        }
+        return "redirect:/student/list";
     }
+
 }
