@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestIndexController {
 
     @GetMapping("/")
-    public ApiResponse index(){
+    public ApiResponse index() {
         return new ApiResponse("Hello!");
     }
-    @GetMapping("/welcom")
-    public ApiResponse welcom(@RequestParam(name="imieTwe") String imie){
 
+    @GetMapping("/welcome")
+    public ApiResponse welcome(@RequestParam(name = "imieTwe") String imie) {
+        return new ApiResponse("Welcome" + imie + "!");
     }
 }
