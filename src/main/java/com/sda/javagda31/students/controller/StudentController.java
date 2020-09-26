@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequestMapping("/student")
@@ -26,6 +29,12 @@ public class StudentController {
     public String submitForm(Student student){
     log.info("Received"+ student);
     studentService.save(student);
-    return "student_form";
+    return "redirect:/student/list";
+    }
+    @GetMapping("/list")
+    public String list(Model model){
+        List<Student> list= studentService.findAllStudents();
+        model.addAttribute("students", list);
+        return "student_list";
     }
 }

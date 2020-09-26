@@ -4,6 +4,9 @@ import com.sda.javagda31.students.model.Student;
 import com.sda.javagda31.students.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 // Dependency Injection mechanizm
 @Service
 public class StudentService {
@@ -16,5 +19,9 @@ public class StudentService {
 
     public void save(Student student) {
         studentRepository.save(student);
+    }
+
+    public List<Student> findAllStudents() {
+        return studentRepository.findAll();
     }
 }
