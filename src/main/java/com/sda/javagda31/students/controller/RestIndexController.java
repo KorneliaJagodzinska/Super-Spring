@@ -1,5 +1,6 @@
 package com.sda.javagda31.students.controller;
 
+import com.sda.javagda31.students.model.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestIndexController {
 
     @GetMapping("/")
-    public String index(){
-        return "Hello!";
+    public ApiResponse index(){
+        return new ApiResponse("Hello!");
     }
 }
