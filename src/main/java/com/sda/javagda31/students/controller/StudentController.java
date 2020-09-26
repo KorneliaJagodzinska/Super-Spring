@@ -37,4 +37,9 @@ public class StudentController {
         model.addAttribute("students", list);
         return "student_list";
     }
+    @GetMapping("/delete")
+    public String delete(Long studentId){
+        studentService.delete(studentId);
+        return "redirect:/student/list";
+    }
 }
