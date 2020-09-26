@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class RestIndexController {
 
     private final Utilities utilities;
-    public RestIndexController(Utilities utilities){
-        this.utilities=utilities;
+
+    public RestIndexController(Utilities utilities) {
+        this.utilities = utilities;
     }
 
     @GetMapping("/")
@@ -42,8 +45,16 @@ public class RestIndexController {
     }
 
     // 3. Stwórz endpoint pod adresem /prime który sprawdza czy liczba jest pierwsza i w odpowiedzi zwraca "Yes" lub "No" wewenątrz APIResponse.
+    //http://localhost:8080/api/prime?check=7
     @GetMapping("/prime")
-    public ApiResponse prime(@RequestParam(name="check") int value){
-        return new ApiResponse(utilities.isPrime(value)? "YES":"NO");
+    public ApiResponse prime(@RequestParam(name = "check") int value) {
+        return new ApiResponse(utilities.isPrime(value) ? "YES" : "NO");
+    }
+
+    //4.Funkcja do sumowania wartości
+    //http:localhost:8080/api/sum?tablica=3.0,4.0,5.0
+    @GetMapping("/sum")
+    public double sum(@RequestParam(name="tablica") List<Double> tablica){
+        return tablica.stream().mapToDouble(Double::doubleValue).sum();
     }
 }
